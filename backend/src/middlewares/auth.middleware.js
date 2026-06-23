@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import responses from '../utils/responses'
+import responses from '../utils/responses.js'
 
 export function authMiddleware(req, res, next){
     const authHeader = req.headers.authorization

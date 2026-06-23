@@ -6,7 +6,7 @@ export async function registerController(req, res) {
     try {
         const {email, name, password} = req.body
         const cleanEmail = (email?? "").trim().toLowerCase()
-        const cleanName = username?.trim()
+        const cleanName = name?.trim()
         const cleanPassword = password?.trim()
         
         if(!cleanEmail || !cleanName || !cleanPassword){

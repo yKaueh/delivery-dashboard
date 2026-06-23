@@ -22,11 +22,11 @@ export async function registerService(email, name, password) {
 }
 
 export async function loginService(email, password) {
-    const [rows] = await pool.query(```
+    const [rows] = await pool.query(`
         SELECT id, name, email, password
         FROM users
         WHERE email = ?
-        ```, [email])
+        `, [email])
 
     const user = rows[0]
 
@@ -34,7 +34,7 @@ export async function loginService(email, password) {
         return null
     }
 
-    const isMatch = bcrypt.compare(password, user.password)
+    const isMatch = await bcrypt.compare(password, user.password)
 
     if(!isMatch){
         return null
