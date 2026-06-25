@@ -14,6 +14,10 @@ function unauthorized(res, message){
     return res.status(401).json({message})
 }
 
+function notFound(res, message){
+    return res.status(404).json({message})
+}
+
 function conflict(res, message){
     return res.status(409).json({message})
 }
