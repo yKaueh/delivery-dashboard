@@ -32,6 +32,7 @@ export default{
     created,
     badRequest,
     unauthorized,
+    notFound,
     conflict,
     internalError
 }

@@ -25,13 +25,13 @@ export async function getWorkDayController(req, res){
         const { userId } = req
         const { id } = req.params
 
-        const workdayId = Number(id)
+        const workDayId = Number(id)
 
-        if(Number.isNaN(workdayId) || workdayId <= 0){
+        if(Number.isNaN(workDayId) || workDayId <= 0){
             return responses.badRequest(res, "ID inválido")
         }
 
-        const workday = await getWorkDayService(userId, workdayId)
+        const workday = await getWorkDayService(userId, workDayId)
 
         if(!workday){
             return responses.notFound(res, "Dia não encontrado")
@@ -92,13 +92,13 @@ export async function deleteWorkDayController(req, res) {
         const { userId } = req
         const { id } = req.params
 
-        const workdayId = Number(id)
+        const workDayId = Number(id)
 
-        if(Number.isNaN(workdayId) || workdayId <= 0){
+        if(Number.isNaN(workDayId) || workDayId <= 0){
             return responses.badRequest(res, "ID inválido")
         }
 
-        const deleted = await deleteWorkDayService(userId, workdayId)
+        const deleted = await deleteWorkDayService(userId, workDayId)
 
         if(!deleted){
             return responses.notFound(res, "Dia não encontrado")
@@ -125,16 +125,15 @@ export async function updateWorkDayController(req, res) {
             vehicle_type
         } = req.body
 
-        const workdayId = Number(id)
-
-        if(Number.isNaN(workdayId) || workdayId <= 0){
-            return responses.badRequest(res, "ID inválido")
-        }
-
+        const workDayId = Number(id)
         const cleanDate = date?.trim()
         const cleanWeatherConditions = weather_conditions?.trim()
         const cleanNotes = notes?.trim()
         const cleanVehicleType = vehicle_type?.trim()
+
+        if(Number.isNaN(workDayId) || workDayId <= 0){
+            return responses.badRequest(res, "ID inválido")
+        }
 
         if(!cleanDate){
             return responses.badRequest(res, "Data obrigatória")
@@ -145,7 +144,7 @@ export async function updateWorkDayController(req, res) {
 
         const updated = await updateWorkDayService(
             userId,
-            workdayId,
+            workDayId,
             cleanDate,
             tips,
             kilometers,
